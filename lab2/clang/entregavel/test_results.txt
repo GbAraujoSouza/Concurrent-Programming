@@ -1,0 +1,112 @@
+
+====================
+Executando testes para produto interno
+====================
+
+--- Executando teste para: 1 threads e dimensão: 1000000---
+Teste: ./main.o vectors 1
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 3.24740409851074218750000000
+
+
+--- Executando teste para: 2 threads e dimensão: 1000000---
+Teste: ./main.o vectors 2
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 2.47781276702880859375000000
+
+
+--- Executando teste para: 3 threads e dimensão: 1000000---
+Teste: ./main.o vectors 3
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 2.12127367655436183113693005
+
+
+--- Executando teste para: 4 threads e dimensão: 1000000---
+Teste: ./main.o vectors 4
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 1.88584327697753906250000000
+
+
+--- Executando teste para: 5 threads e dimensão: 1000000---
+Teste: ./main.o vectors 5
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 1.72234535217285156250000000
+
+
+--- Executando teste para: 6 threads e dimensão: 1000000---
+Teste: ./main.o vectors 6
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 1.61952177683512377193153498
+
+
+--- Executando teste para: 1 threads e dimensão: 10000000---
+Teste: ./main.o vectors 1
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 28.29947471618652343750000000
+
+
+--- Executando teste para: 2 threads e dimensão: 10000000---
+Teste: ./main.o vectors 2
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 21.14853858947753906250000000
+
+
+--- Executando teste para: 3 threads e dimensão: 10000000---
+Teste: ./main.o vectors 3
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 17.35515594482421875000000000
+
+
+--- Executando teste para: 4 threads e dimensão: 10000000---
+Teste: ./main.o vectors 4
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 15.07363319396972656250000000
+
+
+--- Executando teste para: 5 threads e dimensão: 10000000---
+Teste: ./main.o vectors 5
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 13.83306503295898437500000000
+
+
+--- Executando teste para: 6 threads e dimensão: 10000000---
+Teste: ./main.o vectors 6
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 12.80279159545898437500000000
+
+
+--- Executando teste para: 1 threads e dimensão: 100000000---
+Teste: ./main.o vectors 1
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 279.52976226806640625000000000
+
+
+--- Executando teste para: 2 threads e dimensão: 100000000---
+Teste: ./main.o vectors 2
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 211.15930080413818359375000000
+
+
+--- Executando teste para: 3 threads e dimensão: 100000000---
+Teste: ./main.o vectors 3
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 175.34712155659994436973647680
+
+
+--- Executando teste para: 4 threads e dimensão: 100000000---
+Teste: ./main.o vectors 4
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 151.72743797302246093750000000
+
+
+--- Executando teste para: 5 threads e dimensão: 100000000---
+Teste: ./main.o vectors 5
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 138.63954544067382812500000000
+
+
+--- Executando teste para: 6 threads e dimensão: 100000000---
+Teste: ./main.o vectors 6
+  - Variação média relativa: 0.00000000000000000000000000
+  - Tempo médio em ms: 127.35292116800944484111823840
+
