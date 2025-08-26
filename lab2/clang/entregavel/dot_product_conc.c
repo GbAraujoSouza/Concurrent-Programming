@@ -1,3 +1,5 @@
+#include "timer.h"
+#include <math.h>
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -5,34 +7,36 @@
 
 typedef struct {
   long int n;
-  float *vector1;
-  float *vector2;
+  double *vector1;
+  double *vector2;
   short int nthreads;
   short int id;
 } t_args;
 
 void *partialDotProduct(void *args) {
   t_args *arg = (t_args *)args;
-  int ini, fim, fatia;
-  float partial_sum = 0, *ret;
+  long int ini, fim, fatia;
+  double partial_sum = 0.0, *ret;
 
   fatia = arg->n / arg->nthreads;
   ini = arg->id * fatia;
   fim = ini + fatia;
-  float *vector1 = arg->vector1;
-  float *vector2 = arg->vector2;
+  double *vector1 = arg->vector1;
+  double *vector2 = arg->vector2;
   if (arg->id == (arg->nthreads - 1))
     fim = arg->n;
 
-  for (int i = ini; i < fim; i++) {
+  for (long int i = ini; i < fim; i++) {
     partial_sum += (vector1[i]) * (vector2[i]);
   }
 
-  ret = (float *)malloc(sizeof(float));
+  ret = (double *)malloc(sizeof(double));
   if (ret != NULL)
     *ret = partial_sum;
   else
-    printf("--ERRO: malloc() thread\n");
+    fprintf(stderr, "ERROR: malloc() thread\n");
+
+  free(args);
   pthread_exit((void *)ret);
 }
 
@@ -59,16 +63,16 @@ int main(int argc, char *argv[]) {
   long int n;
   read_objects = fread(&n, sizeof(long int), 1, pfile);
 
-  float *vector1, *vector2;
-  vector1 = (float *)malloc(sizeof(float) * n);
-  vector2 = (float *)malloc(sizeof(float) * n);
+  double *vector1, *vector2;
+  vector1 = (double *)malloc(sizeof(double) * n);
+  vector2 = (double *)malloc(sizeof(double) * n);
   if (!vector1 || !vector2) {
     fprintf(stderr, "ERROR: failure to allocate memory for vectors\n");
     return EXIT_FAILURE;
   }
 
-  read_objects = fread(vector1, sizeof(float), n, pfile);
-  read_objects = fread(vector2, sizeof(float), n, pfile);
+  read_objects = fread(vector1, sizeof(double), n, pfile);
+  read_objects = fread(vector2, sizeof(double), n, pfile);
 
   if (nthreads > n)
     nthreads = n;
@@ -80,6 +84,9 @@ int main(int argc, char *argv[]) {
     fprintf(stderr, "ERROR: malloc()\n");
     return EXIT_FAILURE;
   }
+
+  double beginning, end, interval;
+  GET_TIME(beginning);
 
   for (long int i = 0; i < nthreads; i++) {
     t_args *args = (t_args *)malloc(sizeof(t_args));
@@ -94,21 +101,27 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  float total_dot_product = 0;
-  float *ret_sum;
-  for (int i = 0; i < nthreads; i++) {
-    if (pthread_join(tid_system[i], (void *)&ret_sum)) {
-      printf("ERROR: pthread_join()\n");
+  double total_dot_product = 0.0;
+  double *ret_sum;
+  for (long int i = 0; i < nthreads; i++) {
+    if (pthread_join(tid_system[i], (void **)&ret_sum)) {
+      fprintf(stderr, "ERROR: pthread_join()\n");
       return EXIT_FAILURE;
     }
     total_dot_product += *ret_sum;
     free(ret_sum);
   }
 
-  float original_dot_product;
-  printf("soma_concorrente             = %.26f\n", total_dot_product);
+  double original_dot_product;
   read_objects = fread(&original_dot_product, sizeof(double), 1, pfile);
-  printf("\nSoma-ori                     = %.26lf\n", original_dot_product);
+
+  printf("relative error: %.26lf\n", fabs((original_dot_product - total_dot_product) /
+                                original_dot_product));
+
+  GET_TIME(end);
+
+  interval = end - beginning;
+  printf("Time (ms) for operation: %.26lf\n", interval * 1000);
 
   free(vector1);
   free(vector2);
