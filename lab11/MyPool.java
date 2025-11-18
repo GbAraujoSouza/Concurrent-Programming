@@ -6,7 +6,24 @@
 import java.util.LinkedList;
 
 //-------------------------------------------------------------------------------
-//!!! Documentar essa classe !!!
+/**
+ * Classe FilaTarefas - Implementação de um pool de threads
+ * 
+ * Esta classe gerencia um conjunto fixo de threads (pool) que executam tarefas
+ * de forma concorrente. As tarefas são organizadas em uma fila (queue) e
+ * distribuídas entre as threads disponíveis.
+ * 
+ * Funcionamento: - No construtor, cria-se um número fixo de threads (nThreads)
+ * que ficam aguardando tarefas na fila - O método execute() adiciona novas
+ * tarefas (Runnable) na fila - As threads do pool retiram tarefas da fila e as
+ * executam - O método shutdown() sinaliza o encerramento do pool e aguarda
+ * todas as threads terminarem
+ * 
+ * Sincronização: - A fila é protegida por sincronização (synchronized) para
+ * evitar condições de corrida - Threads aguardam (wait) quando a fila está
+ * vazia - São notificadas (notify/notifyAll) quando novas tarefas são
+ * adicionadas ou quando o shutdown é solicitado
+ */
 class FilaTarefas {
     private final int nThreads;
     private final MyPoolThreads[] threads;
@@ -87,9 +104,33 @@ class Hello implements Runnable {
 }
 
 class Primo implements Runnable {
-    // ...completar implementacao, recebe um numero inteiro positivo e imprime se
-    // esse numero eh primo ou nao
+    private long n;
+
+    public Primo(long n) {
+        this.n = n;
+    }
+
+    // Metodo para determinar se um numero e primo
+    private boolean ehPrimo(long n) {
+        if (n <= 1)
+            return false;
+        if (n == 2)
+            return true;
+        if (n % 2 == 0)
+            return false;
+        for (long i = 3; i <= Math.sqrt(n); i += 2) {
+            if (n % i == 0)
+                return false;
+        }
+        return true;
+    }
+
     public void run() {
+        if (ehPrimo(n)) {
+            System.out.println(n + " eh primo");
+        } else {
+            System.out.println(n + " nao eh primo");
+        }
     }
 }
 
@@ -104,10 +145,10 @@ class MyPool {
         // --PASSO 3: dispara a execução dos objetos runnable usando o pool de threads
         for (int i = 0; i < 25; i++) {
             final String m = "Hello da tarefa " + i;
-            Runnable hello = new Hello(m);
-            pool.execute(hello);
-            // Runnable primo = new Primo(i);
-            // pool.execute(primo);
+            // Runnable hello = new Hello(m);
+            // pool.execute(hello);
+            Runnable primo = new Primo(i);
+            pool.execute(primo);
         }
 
         // --PASSO 4: esperar pelo termino das threads
