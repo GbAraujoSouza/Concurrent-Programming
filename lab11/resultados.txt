@@ -1,0 +1,79 @@
+Resultados Lab11 Concorrente
+
+Configuracao: N = 10000000, NTHREADS = 1
+
+=== VERSAO SEQUENCIAL ===
+Quantidade de numeros primos (sequencial): 664579
+Tempo de execucao: 1350 ms
+
+=== VERSAO CONCORRENTE (Futures) ===
+Tarefas submetidas: 10000000
+Quantidade de numeros primos (concorrente): 664579
+Tempo de execucao: 2848 ms
+
+=== VALIDACAO ===
+CORRETO! Ambas as versoes encontraram 664579 primos.
+
+#####################################################
+
+Configuracao: N = 10000000, NTHREADS = 2
+
+=== VERSAO SEQUENCIAL ===
+Quantidade de numeros primos (sequencial): 664579
+Tempo de execucao: 1357 ms
+
+=== VERSAO CONCORRENTE (Futures) ===
+Tarefas submetidas: 10000000
+Quantidade de numeros primos (concorrente): 664579
+Tempo de execucao: 2339 ms
+
+=== VALIDACAO ===
+CORRETO! Ambas as versoes encontraram 664579 primos.
+
+#####################################################
+
+Configuracao: N = 10000000, NTHREADS = 4
+
+=== VERSAO SEQUENCIAL ===
+Quantidade de numeros primos (sequencial): 664579
+Tempo de execucao: 1361 ms
+
+=== VERSAO CONCORRENTE (Futures) ===
+Tarefas submetidas: 10000000
+Quantidade de numeros primos (concorrente): 664579
+Tempo de execucao: 2808 ms
+
+=== VALIDACAO ===
+CORRETO! Ambas as versoes encontraram 664579 primos.
+
+#####################################################
+
+Configuracao: N = 10000000, NTHREADS = 8
+
+=== VERSAO SEQUENCIAL ===
+Quantidade de numeros primos (sequencial): 664579
+Tempo de execucao: 1353 ms
+
+=== VERSAO CONCORRENTE (Futures) ===
+Tarefas submetidas: 10000000
+Quantidade de numeros primos (concorrente): 664579
+Tempo de execucao: 2785 ms
+
+=== VALIDACAO ===
+CORRETO! Ambas as versoes encontraram 664579 primos.
+
+#####################################################
+
+Configuracao: N = 10000000, NTHREADS = 12
+
+=== VERSAO SEQUENCIAL ===
+Quantidade de numeros primos (sequencial): 664579
+Tempo de execucao: 1341 ms
+
+=== VERSAO CONCORRENTE (Futures) ===
+Tarefas submetidas: 10000000
+Quantidade de numeros primos (concorrente): 664579
+Tempo de execucao: 2849 ms
+
+=== VALIDACAO ===
+CORRETO! Ambas as versoes encontraram 664579 primos.
